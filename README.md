@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # Reminder
 `npx create-next-app@latest`
 
+## Tone.JS
+https://tonejs.github.io/
+
+
 First, run the development server:
 
 ```bash

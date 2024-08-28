@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import Osc1 from './components/Osc1';
+import Osc1 from './components/osc1/Osc1';
 
 const HomePage: React.FC = () => {
   const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
@@ -48,16 +48,21 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const changeOscFreq = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+  const changeOscFreq = (newFreq: number) => {
     if (oscillator) {
-      oscillator.frequency.value = parseFloat(value);
+      oscillator.frequency.value = newFreq;
     }
   };
 
   const handleGainChange = (value: number) => {
     setGainValue(value);
   };
+
+  const changeWaveType = (newWaveType: string) => {
+    if (oscillator) {
+      oscillator.type = newWaveType as OscillatorType
+    }
+  }
 
   // setState dispatch 
   // graphQL -> toneJS -> redis?
@@ -70,37 +75,30 @@ const HomePage: React.FC = () => {
      * -- contains <Key>
      */
     <div className="synth-shell">
-      <h1>Synthesizer</h1>
+      <h1>Synthesizer.v1</h1>
       <div className="synth">
+        <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} changeWaveType={changeWaveType} />
         <section className="buttons">
           <button onClick={handleStart}>Start</button>
           <button onClick={handleStop}>Stop</button>
-          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
-        </section>
-      </div>
-      <div className="synth">
-        <section className="buttons">
-          <button onClick={handleStart}>Start</button>
-          <button onClick={handleStop}>Stop</button>
-          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
-        </section>
-      </div>
-      <div className="synth">
-        <section className="buttons">
-          <button onClick={handleStart}>Start</button>
-          <button onClick={handleStop}>Stop</button>
-          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
-        </section>
-      </div>
-      <div className="synth">
-        <section className="buttons">
-          <button onClick={handleStart}>Start</button>
-          <button onClick={handleStop}>Stop</button>
-          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
         </section>
       </div>
     </div>
   );
 };
+
+// TODO: cma
+/**
+ * Build a reusable, modular oscillator 
+ * Goal is to create polyphonic synth with Filters
+ * 
+ * Follow react atomic design
+ * 
+ * Implement: 
+ * - backend component
+ * - login? 
+ * - save user settings
+ * - keyboard for the synth
+ */
 
 export default HomePage;

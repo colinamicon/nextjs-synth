@@ -9,6 +9,13 @@ https://tonejs.github.io/
 
 https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
 
+## DETAILS
+# Node Version 18.17.0
+
+## REFERENCES:
+# [React Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)
+# [Web Audio Api Player](https://github.com/chrisweb/web-audio-api-player/blob/main/src/library/audio.ts)
+
 
 
 First, run the development server:

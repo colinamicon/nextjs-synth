@@ -77,10 +77,10 @@ const HomePage: React.FC = () => {
     <div className="synth-shell">
       <h1>Synthesizer.v1</h1>
       <div className="synth">
+        <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} changeWaveType={changeWaveType} />
         <section className="buttons">
           <button onClick={handleStart}>Start</button>
           <button onClick={handleStop}>Stop</button>
-          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} changeWaveType={changeWaveType} />
         </section>
       </div>
     </div>
@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
 
 // TODO: cma
 /**
- * Build a reusable, modular synth 
+ * Build a reusable, modular oscillator 
  * Goal is to create polyphonic synth with Filters
  * 
  * Follow react atomic design

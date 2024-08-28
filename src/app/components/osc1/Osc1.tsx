@@ -35,7 +35,8 @@ const Osc1: React.FC<Osc1Props> = ({ changeFrequency, changeGainAmp, changeWaveT
                 onChange={handleFreqChange}
                 type='range'
                 id='frequency'
-                max="5000"
+                min="55"
+                max="880"
             />
             <br />
             <label>Change Volume: </label>

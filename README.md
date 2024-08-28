@@ -7,6 +7,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Tone.JS
 https://tonejs.github.io/
 
+https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
+
+
 
 First, run the development server:
 

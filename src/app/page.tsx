@@ -5,7 +5,7 @@ import Osc1 from './components/Osc1';
 
 const HomePage: React.FC = () => {
   const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
-  const [gainValue, setGainValue] = useState<number>(0.5); // Initial gain value
+  const [gainValue, setGainValue] = useState<number>(0.3); // Initial gain value
 
   useEffect(() => {
     const actx = new (window.AudioContext)();
@@ -59,9 +59,39 @@ const HomePage: React.FC = () => {
     setGainValue(value);
   };
 
+  // setState dispatch 
+  // graphQL -> toneJS -> redis?
+
   return (
+    /**
+     * <SynthShell props={buttons, freq?, gain?}/>
+     * -- contains: <Osc1, Osc2, Sub, Filters>
+     * <Keyboard props={inputKey, velocity, bend?, keyFrame}>
+     * -- contains <Key>
+     */
     <div className="synth-shell">
       <h1>Synthesizer</h1>
+      <div className="synth">
+        <section className="buttons">
+          <button onClick={handleStart}>Start</button>
+          <button onClick={handleStop}>Stop</button>
+          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
+        </section>
+      </div>
+      <div className="synth">
+        <section className="buttons">
+          <button onClick={handleStart}>Start</button>
+          <button onClick={handleStop}>Stop</button>
+          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
+        </section>
+      </div>
+      <div className="synth">
+        <section className="buttons">
+          <button onClick={handleStart}>Start</button>
+          <button onClick={handleStop}>Stop</button>
+          <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} />
+        </section>
+      </div>
       <div className="synth">
         <section className="buttons">
           <button onClick={handleStart}>Start</button>

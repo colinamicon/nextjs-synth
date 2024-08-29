@@ -1,8 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-# Reminder
-`npx create-next-app@latest`
+## NextJS - Synthesizer
 
 ## Tone.JS
 https://tonejs.github.io/
@@ -13,10 +9,13 @@ https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript
 # Node Version 18.17.0
 
 ## REFERENCES:
-# [React Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)
+# [Web Audio Api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 # [Web Audio Api Player](https://github.com/chrisweb/web-audio-api-player/blob/main/src/library/audio.ts)
 
-
+## ABOUT
+# Created with NextJS, WebAudioAPI, and Typescript
+Synthesizer v1
+Author: Colin Amicon
 
 First, run the development server:
 
@@ -29,19 +28,6 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

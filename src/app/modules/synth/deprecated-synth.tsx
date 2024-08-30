@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const DeprecatedSynth: React.FC = () => {
 
     // functional synth - original implementation 
@@ -35,4 +37,8 @@ const DeprecatedSynth: React.FC = () => {
         }
     }, [oscillator, gainValue]);
 
+    return (<></>)
+
 }
+
+export default DeprecatedSynth;

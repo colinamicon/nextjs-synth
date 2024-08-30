@@ -1,13 +1,28 @@
 import Osc1 from "@/app/components/osc1/Osc1"
 import Oscillator from "../oscillator/Oscillator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const useAudioContext = () => {
+    const [audioContext, setAudioContext] = useState<AudioContext>();
+
+    useEffect(() => {
+        const context = new window.AudioContext();
+        setAudioContext(context);
+    }, []);
+
+    return { audioContext };
+};
 
 const Synth: React.FC = () => {
     // Unused, somehow causing playback issues when set within 
     // oscillator handlers
     const [isPowerOn, setPowerOn] = useState(false);
+    const { audioContext } = useAudioContext();
 
-    const audioContext = new AudioContext();
+    if (!audioContext) {
+        return <div>Loading...</div>;
+    }
+
     const oscillatorTest = new Oscillator({
         context: audioContext,
         type: 'sine',

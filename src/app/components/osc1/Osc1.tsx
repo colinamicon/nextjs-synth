@@ -22,7 +22,7 @@ const Osc1: React.FC<Osc1Props> = ({ changeFrequency, changeGainAmp, changeWaveT
 
     return (
         <div>
-            <label>Change Waveform: </label>
+            <label>Waveform: </label>
             <select onChange={handleWaveChange}>
                 <option value={'sine'}>sine</option>
                 <option value={'square'}>square</option>
@@ -30,7 +30,7 @@ const Osc1: React.FC<Osc1Props> = ({ changeFrequency, changeGainAmp, changeWaveT
                 <option value={'sawtooth'}>sawtooth</option>
             </select>
             <br />
-            <label>Change Frequency: </label>
+            <label>Frequency: </label>
             <input
                 onChange={handleFreqChange}
                 type='range'
@@ -39,7 +39,7 @@ const Osc1: React.FC<Osc1Props> = ({ changeFrequency, changeGainAmp, changeWaveT
                 max="880"
             />
             <br />
-            <label>Change Volume: </label>
+            <label>Volume: </label>
             <input
                 type="range"
                 min="0"

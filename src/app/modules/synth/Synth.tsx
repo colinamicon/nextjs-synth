@@ -1,69 +1,59 @@
 import Osc1 from "@/app/components/osc1/Osc1"
-import { useEffect, useState } from "react";
+import Oscillator from "../oscillator/Oscillator";
+import { useState } from "react";
 
 const Synth: React.FC = () => {
-    const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
-    const [gainValue, setGainValue] = useState<number>(0.3); // Initial gain value
+    // Unused, somehow causing playback issues when set within 
+    // oscillator handlers
+    const [isPowerOn, setPowerOn] = useState(false);
 
-    useEffect(() => {
-        const actx = new (window.AudioContext)();
-        const out = actx.destination;
-        const osc = actx.createOscillator();
-        const gain = actx.createGain();
+    const audioContext = new AudioContext();
+    const oscillatorTest = new Oscillator({
+        context: audioContext,
+        type: 'sine',
+        frequency: 440,
+        gain: 0.5
+    });
 
-        osc.connect(gain);
-        gain.connect(out);
 
-        setOscillator(osc);
-
-        return () => {
-            // Clean up resources on component unmount
-            osc.disconnect();
-            gain.disconnect();
-        };
-    }, []);
-
-    useEffect(() => {
-        // Update gain value when it changes
-        if (oscillator) {
-            const gainNode = oscillator.context.createGain();
-            gainNode.gain.value = gainValue;
-            oscillator.disconnect();
-            oscillator.connect(gainNode);
-            gainNode.connect(oscillator.context.destination);
+    const handleInitiate = () => {
+        if (oscillatorTest) {
+            oscillatorTest.initiateStart();
         }
-    }, [oscillator, gainValue]);
+    }
 
     const handleStart = () => {
-        if (oscillator) {
-            oscillator.start();
+        if (oscillatorTest) {
+            oscillatorTest.connect()
         }
     };
 
     const handleStop = () => {
-        if (oscillator) {
-            oscillator.stop();
+        if (oscillatorTest) {
+            oscillatorTest.stop();
         }
     };
 
     const changeOscFreq = (newFreq: number) => {
-        if (oscillator) {
-            oscillator.frequency.value = newFreq;
+        if (oscillatorTest) {
+            oscillatorTest.setFrequency(newFreq)
         }
     };
 
     const handleGainChange = (value: number) => {
-        setGainValue(value);
+        if (oscillatorTest) {
+            oscillatorTest.setGain(value)
+        }
     };
 
     const changeWaveType = (newWaveType: string) => {
-        if (oscillator) {
-            oscillator.type = newWaveType as OscillatorType
+        if (oscillatorTest) {
+            oscillatorTest.setType(newWaveType as OscillatorType)
         }
     }
 
-    return <div>
-
+    return <div className="synth-body">
+        <button className={`powerButton`} onClick={handleInitiate}>i_o</button>
         <Osc1 changeFrequency={changeOscFreq} changeGainAmp={handleGainChange} changeWaveType={changeWaveType} />
         <section className="buttons">
             <button onClick={handleStart}>Start</button>
